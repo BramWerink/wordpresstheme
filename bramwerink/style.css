@@ -4,6 +4,7 @@ html {
 
 :root {
   --main:#5751FF;
+  --main-lighter:#EEEEFF;
   --red:#E23636;
   --orange:#FF9C00;
   --yellow:#FFC800;
@@ -17,6 +18,9 @@ h1, h2, h3, h4, h5, h6, a, li, p, span, div, button, input, textarea, select {
    font-family: "IBM Plex Sans", serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600!important;
+}
 header.site-header {
   width: 100%;
   position: fixed;
@@ -76,7 +80,6 @@ footer{
     background: var(--cloudy);
     width: 100vw;
 }
-
 
 
 .footer .sitelogo img{

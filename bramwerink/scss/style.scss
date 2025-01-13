@@ -1,0 +1,63 @@
+// Variables
+html{
+    margin: 0!important;    
+}
+
+--root{
+    --main:#5751FF;
+    --red:#E23636;
+    --orange:#FF9C00;
+    --yellow:#FFC800;
+    --green:#37B144;
+    --blue:#338ED0;
+}
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+
+h1,h2,h3,h4,h5,h6,a,li,p,span,div,button,input,textarea,select{
+    font-family: "IBM Plex Sans", serif;
+}
+
+
+
+// header
+header.site-header{
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem;
+    background: red;
+
+    .pill{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        position: relative;
+        border-radius: 10rem;
+        background-color: #ffffffcc;
+        backdrop-filter: blur(1rem);
+
+        .main-nav ul{
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            margin-bottom: 0;
+            padding: 0;
+            li{
+                list-style: none;
+                a{
+                    padding: .5rem 1rem;
+                    display:inline-block
+                }
+
+                &:a:hover{
+                    background-color: var(--main);
+                }
+            }
+        }
+    }
+}
