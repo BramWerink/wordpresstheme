@@ -1,12 +1,12 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
-    "name": "blocks/custom-block",  
+    "name": "blocks/cards",  
     "title": "Your Custom Block",
     "category": "text",
     "icon": "smiley",
     "description": "A custom block for your WordPress theme.",
-    "keywords": ["custom", "block"],
+    "keywords": ["hero", "block"],
     "supports": {
       "align": true,
       "anchor": true,
@@ -15,5 +15,5 @@
     "textdomain": "bramwerink",
     "editorScript": "block-editor-script",  
     "editorStyle": "block-editor-style",  
-    "style": "block-frond-end-style"
+    "style": "block-front-end-style"
 }
