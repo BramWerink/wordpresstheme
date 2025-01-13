@@ -32,37 +32,38 @@ add_action('after_setup_theme', function () {
     add_theme_support('responsive-embeds');
 });
 
+// Custom blocks
 add_action('init', function () {
-    // Register the editor script
+
+
+
+    // Editor script
     wp_register_script(
-        'block-editor-script',
-        get_template_directory_uri() . '/blocks/custom-block/editor.js',
-        ['wp-blocks', 'wp-i18n', 'wp-element', 'wp-block-editor'], // Dependencies
-        filemtime(get_template_directory() . '/blocks/custom-block/editor.js')
+        'block-editor-script', // handle
+        get_template_directory_uri() . '/blocks/hero/editor.js', // Make sure the path is correct
+        ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'], // Dependencies
+        filemtime(get_template_directory() . '/blocks/hero/editor.js') // Cache busting
     );
 
-    // Register the editor styles
+    // Editor styles
     wp_register_style(
-        'block-editor-style',
-        get_template_directory_uri() . '/blocks/custom-block/editor.css',
-        [],
-        filemtime(get_template_directory() . '/blocks/custom-block/editor.css')
+        'block-editor-style', // Correct handle
+        get_template_directory_uri() . '/blocks/hero/editor.css', // Make sure the path is correct
+        [], // Dependencies (if any)
+        filemtime(get_template_directory() . '/blocks/hero/editor.css') // Cache busting
     );
-
-    // Register the frontend styles
+    
+    // Frontend styles
     wp_register_style(
-        'blocks/custom-block-style',
-        get_template_directory_uri() . '/blocks/custom-block/style.css',
-        [],
-        filemtime(get_template_directory() . '/blocks/custom-block/style.css')
+        'block-front-end-style', // Correct handle
+        get_template_directory_uri() . '/blocks/hero/style.css', // Make sure the path is correct
+        [], // Dependencies (if any)
+        filemtime(get_template_directory() . '/blocks/hero/style.css') // Cache busting
     );
-
-    // Register the block using block.json
-    register_block_type(
-        get_template_directory() . '/blocks/custom-block/block.json'
-    );
+    
+    // Register block
+    register_block_type(get_template_directory() . '/blocks/hero/block.json'); // Make sure the path is correct
 });
-
 
 add_theme_support('admin-bar');
 
