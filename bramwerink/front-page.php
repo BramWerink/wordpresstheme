@@ -13,6 +13,5 @@
             <?php endwhile; // End the while loop ?>
         <?php endif; // End the if statement ?>
 
-        <?php get_footer(); ?>
     </body>
 </html>
