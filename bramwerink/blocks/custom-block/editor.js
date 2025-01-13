@@ -1,39 +1,43 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
-import { useBlockProps } from '@wordpress/block-editor';
+(function (wp) {
+    const { registerBlockType } = wp.blocks;
+    const { __ } = wp.i18n;
+    const { useBlockProps } = wp.blockEditor;
 
-registerBlockType('blocks/custom-block', {
-    title: __('Your Custom Block', 'bramwerink'), // Use your theme text domain
-    icon: 'smiley',
-    category: 'text',
-    attributes: {
-        content: {
-            type: 'string',
-            source: 'html',
-            selector: 'p',
+    registerBlockType('blocks/custom-block', {
+        title: __('Your Custom Block', 'bramwerink'),
+        icon: 'smiley',
+        category: 'text',
+        attributes: {
+            content: {
+                type: 'string',
+                source: 'html',
+                selector: 'p',
+            },
         },
-    },
-    edit({ attributes, setAttributes }) {
-        const blockProps = useBlockProps();
+        edit: function (props) {
+            const blockProps = useBlockProps();
+            const { attributes, setAttributes } = props;
 
-        return (
-            <p {...blockProps}>
-                <input
-                    type="text"
-                    value={attributes.content || ''}
-                    onChange={(event) => setAttributes({ content: event.target.value })}
-                    placeholder={__('Enter some text...', 'bramwerink')} // Correct text domain
-                />
-            </p>
-        );
-    },
-    save({ attributes }) {
-        const blockProps = useBlockProps.save();
+            return wp.element.createElement(
+                'p',
+                blockProps,
+                wp.element.createElement('input', {
+                    type: 'text',
+                    value: attributes.content || '',
+                    onChange: function (event) {
+                        setAttributes({ content: event.target.value });
+                    },
+                    placeholder: __('Enter some text...', 'bramwerink'),
+                })
+            );
+        },
+        save: function (props) {
+            const blockProps = useBlockProps.save();
+            const { attributes } = props;
 
-        return <p {...blockProps}>{attributes.content}</p>;
-    },
-
-    
-});
+            return wp.element.createElement('p', blockProps, attributes.content);
+        },
+    });
+})(window.wp);
 
 console.log("Custom block JavaScript loaded");
