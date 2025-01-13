@@ -13,7 +13,7 @@
       "customClassName": true
     },
     "textdomain": "bramwerink",
-    "editorScript": "blocks/custom-block-editor-script",  
-    "editorStyle": "blocks/custom-block-editor-style",  
-    "style": "blocks/custom-block-style" 
+    "editorScript": "blocks/custom-block/editor.js",  
+    "editorStyle": "blocks/custom-block/editor.css",  
+    "style": "blocks/custom-block/style.css"
 }

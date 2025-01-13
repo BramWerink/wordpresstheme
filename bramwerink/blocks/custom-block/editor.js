@@ -32,4 +32,8 @@ registerBlockType('blocks/custom-block', {
 
         return <p {...blockProps}>{attributes.content}</p>;
     },
+
+    
 });
+
+console.log("Custom block JavaScript loaded");

@@ -34,6 +34,18 @@ add_action('after_setup_theme', function () {
 
 // Custom blocks
 add_action('init', function () {
+
+ ?>
+    <script>
+        console.log('Checking if block.json exists:');
+        <?php if ( file_exists(get_template_directory() . '/blocks/custom-block/block.json') ) : ?>
+            console.log("block.json file exists");
+        <?php else : ?>
+            console.log("block.json file NOT found");
+        <?php endif; ?>
+    </script>
+    <?php
+
     // Editor script
     wp_register_script(
         'bramwerink-custom-block-editor-script', // handle
