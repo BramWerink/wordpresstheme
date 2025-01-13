@@ -32,38 +32,58 @@ add_action('after_setup_theme', function () {
     add_theme_support('responsive-embeds');
 });
 
-// Custom Blocks registration
-add_action('init', function () {
-
-    // Editor script for the block
-    wp_register_script(
-        'block-editor-script', // Handle
-        get_template_directory_uri() . '/blocks/hero/editor.js', // Path to JS
-        ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'], // Dependencies
-        filemtime(get_template_directory() . '/blocks/hero/editor.js') // Cache busting
-    );
-
-    // Editor styles for the block
-    wp_register_style(
-        'block-editor-style', // Handle
-        get_template_directory_uri() . '/blocks/hero/editor.css', // Path to CSS
-        [], // Dependencies
-        filemtime(get_template_directory() . '/blocks/hero/editor.css') // Cache busting
-    );
-    
-    // Frontend styles for the block
-    wp_register_style(
-        'block-front-end-style', // Handle
-        get_template_directory_uri() . '/blocks/hero/style.css', // Path to CSS
-        [], // Dependencies
-        filemtime(get_template_directory() . '/blocks/hero/style.css') // Cache busting
-    );
-
-    // Register the block type with the block.json configuration
-    register_block_type(get_template_directory() . '/blocks/hero/block.json');
-});
-
 // Adding support for admin bar
 add_theme_support('admin-bar');
+
+// Custom Blocks registration
+add_action('init', function () {
+    $blocks_dir = get_template_directory() . '/blocks/';
+    $block_folders = glob($blocks_dir . '*', GLOB_ONLYDIR);
+
+    foreach ($block_folders as $block_folder) {
+        $block_json_path = $block_folder . '/block.json';
+
+        if (file_exists($block_json_path)) {
+            // Automatically register the block using block.json
+            register_block_type($block_folder);
+
+            // Optionally enqueue additional assets if necessary
+            $editor_js = $block_folder . '/editor.js';
+            $editor_css = $block_folder . '/editor.css';
+            $style_css = $block_folder . '/style.css';
+
+            if (file_exists($editor_js)) {
+                wp_enqueue_script(
+                    basename($block_folder) . '-editor-script',
+                    get_template_directory_uri() . '/blocks/' . basename($block_folder) . '/editor.js',
+                    ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'],
+                    filemtime($editor_js),
+                    true // Load in the footer
+                );
+            }
+
+            if (file_exists($editor_css)) {
+                wp_enqueue_style(
+                    basename($block_folder) . '-editor-style',
+                    get_template_directory_uri() . '/blocks/' . basename($block_folder) . '/editor.css',
+                    [],
+                    filemtime($editor_css)
+                );
+            }
+
+            if (file_exists($style_css)) {
+                wp_enqueue_style(
+                    basename($block_folder) . '-style',
+                    get_template_directory_uri() . '/blocks/' . basename($block_folder) . '/style.css',
+                    [],
+                    filemtime($style_css)
+                );
+            }
+        }
+    }
+});
+
+
+
 
 ?>
