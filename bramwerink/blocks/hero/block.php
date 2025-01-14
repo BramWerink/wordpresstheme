@@ -29,32 +29,32 @@
         // Step 1: Show the speech bubble
         setTimeout(() => {
             speechBubble.style.opacity = "1";
-        }, 1000);
+        }, 400);
 
         // Step 2: Show "Hallo"
         setTimeout(() => {
             hallo.style.opacity = "1";
-        }, 1500);
+        }, 800);
 
         // Step 3: Show the text
         setTimeout(() => {
             text.style.opacity = "1";
-        }, 2000);
+        }, 1200);
 
         // Step 4: Show the emoji
         setTimeout(() => {
             emoji.style.opacity = "1";
-        }, 2500);
+        }, 1600);
 
         // Step 5: Show the title
         setTimeout(() => {
             title.style.opacity = "1";
-        }, 3000);
+        }, 2000);
 
         // Step 6: Show the button
         setTimeout(() => {
             button.style.opacity = "1";
-        }, 4000);
+        }, 2400);
 
         
     });
