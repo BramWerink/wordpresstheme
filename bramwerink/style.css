@@ -12,6 +12,7 @@ html {
   --blue:#338ED0;
   --body:#2e2e2e;
   --cloudy:#f5f5f5;
+  --border:#bebebe;
 }
 
 h1, h2, h3, h4, h5, h6, a, li, p, span, div, button, input, textarea, select {
@@ -21,6 +22,9 @@ h1, h2, h3, h4, h5, h6, a, li, p, span, div, button, input, textarea, select {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600!important;
+}
+header{
+  z-index: 99;
 }
 header.site-header {
   width: 100%;
