@@ -3,6 +3,8 @@
     background: var(--main-lighter);
 }
 
+
+
 .cards .card{
     background: white;
     border-radius: 2rem;
@@ -34,4 +36,103 @@
     gap: 1rem;
     display: flex;
     flex-direction: column;
+}
+
+svg{
+    right: 0;
+    position: absolute;
+    transition: 200ms ease;
+}
+
+
+
+/* animation first block*/
+   /* Initial states for elements */
+   #bar {
+    transform: translateY(100px); /* Starts below */
+    opacity: 0; /* Fully transparent */
+    animation: barAppear 1s ease-out forwards; /* 1 second duration */
+}
+
+.ball {
+    opacity: 0; /* Balls start invisible */
+    animation: ballAppear 1s ease-out forwards;
+}
+
+/* Ball-specific animation with delays for each ball */
+.ball.first {
+    animation-delay: 1s; /* Delay for the first ball */
+}
+
+.ball.second {
+    animation-delay: 1.5s; /* Delay for the second ball */
+}
+
+.ball.third {
+    animation-delay: 2s; /* Delay for the third ball */
+}
+
+/* Bar animation */
+@keyframes barAppear {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Ball animation (morphing effect) */
+@keyframes ballAppear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Morphs into normal size */
+    }
+}
+
+/* animation 2nd block */
+.card .square{
+    opacity: 0;
+    animation: squareAppear 1s ease-out forwards; /* 1 second duration */
+}
+
+.card .square.first{
+    animation-delay: 1s;
+}
+
+.card .square.second{
+    animation-delay: 1.5s;
+}
+
+.card .square.third{
+    animation-delay: 2s;
+}
+
+@keyframes squareAppear{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px){
+    .cards{
+        padding: 5rem 1rem;
+    }
+
+    .cards .row .col-md-4{
+        padding: 1rem 0;
+    }
+
+    .cards .illustration-wrapper svg{
+        /* transform:scale(0.8) */
+    }
 }
