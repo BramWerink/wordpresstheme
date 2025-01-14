@@ -83,6 +83,30 @@ add_action('init', function () {
     }
 });
 
+function bramwerink_render_svg($atts) {
+    // Parse shortcode attributes
+    $atts = shortcode_atts(
+        [
+            'path' => '', // Relative path to the SVG file
+        ],
+        $atts,
+        'svg'
+    );
+
+    // Validate and construct the full file path
+    $svg_path = get_stylesheet_directory() . '/' . ltrim($atts['path'], '/');
+
+    // Check if the file exists and is readable
+    if (file_exists($svg_path) && is_readable($svg_path)) {
+        // Get the SVG file contents
+        $svg_content = file_get_contents($svg_path);
+        return $svg_content;
+    }
+
+    // Return an error message if the SVG couldn't be loaded
+    return '<!-- SVG not found: ' . esc_html($atts['path']) . ' -->';
+}
+add_shortcode('svg', 'bramwerink_render_svg');
 
 
 

@@ -7,12 +7,14 @@ html {
   --main-lighter:#EEEEFF;
   --red:#E23636;
   --orange:#FF9C00;
+  --orange-lighter:#FEF2EA;
   --yellow:#FFC800;
   --green:#37B144;
+  --green-lighter:#EBF8ED;
   --blue:#338ED0;
   --body:#2e2e2e;
   --cloudy:#f5f5f5;
-  --border:#bebebe;
+  --border:#ebebeb;
 }
 
 h1, h2, h3, h4, h5, h6, a, li, p, span, div, button, input, textarea, select {
