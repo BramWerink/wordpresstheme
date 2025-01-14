@@ -17,6 +17,18 @@
     height: 200px;
     background: var(--main-lighter);
     border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.cards .card .illustration-wrapper .illustration{
+    width: 200px;
+    height: 100px;
+    background: var(--main);
+    top: 0;
+    right: 0;
+    position: absolute;
+    border-radius: 0 0 0 2rem;
 }
 .cards .card .content{
     gap: 1rem;
