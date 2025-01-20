@@ -108,6 +108,4 @@ function bramwerink_render_svg($atts) {
 }
 add_shortcode('svg', 'bramwerink_render_svg');
 
-
-
 ?>
