@@ -1,6 +1,7 @@
 .cards{
     padding: 14rem 0rem;
-    background: var(--main-lighter);
+    background: linear-gradient(to bottom, var(--main-lighter), white);
+
 }
 
 
@@ -13,6 +14,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    height: 100%;
 }
 .cards .card .illustration-wrapper{
     width: 100%;
@@ -38,7 +40,7 @@
     flex-direction: column;
 }
 
-svg{
+.cards svg{
     right: 0;
     position: absolute;
     transition: 200ms ease;
@@ -132,7 +134,4 @@ svg{
         padding: 1rem 0;
     }
 
-    .cards .illustration-wrapper svg{
-        /* transform:scale(0.8) */
-    }
 }

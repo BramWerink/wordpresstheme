@@ -64,30 +64,3 @@
         </div>
     </div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                // Add animation class to trigger the animation
-                entry.target.querySelectorAll('.square').forEach((square) => {
-                    square.style.animationPlayState = 'running';
-                });
-                observer.unobserve(entry.target); // Stop observing after triggering
-            }
-        });
-    }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
-
-    // Observe the .card element
-    const card = document.querySelector('.card');
-    if (card) {
-        observer.observe(card);
-
-        // Pause animations initially
-        card.querySelectorAll('.square').forEach((square) => {
-            square.style.animationPlayState = 'paused';
-        });
-    }
-});
-
-</script>
