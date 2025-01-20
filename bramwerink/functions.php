@@ -35,7 +35,7 @@ add_action('after_setup_theme', function () {
 // Adding support for admin bar
 add_theme_support('admin-bar');
 
-// Custom Blocks registration
+// Register Custom Blocks and Enqueue Assets
 add_action('init', function () {
     $blocks_dir = get_template_directory() . '/blocks/';
     $block_folders = glob($blocks_dir . '*', GLOB_ONLYDIR);
@@ -44,10 +44,12 @@ add_action('init', function () {
         $block_json_path = $block_folder . '/block.json';
 
         if (file_exists($block_json_path)) {
-            // Automatically register the block using block.json
-            register_block_type($block_folder);
+            // Register the block and add the render_callback
+            register_block_type($block_folder, array(
+                'render_callback' => 'render_workrepeater_block',
+            ));
 
-            // Optionally enqueue additional assets if necessary
+            // Enqueue assets if necessary
             $editor_js = $block_folder . '/editor.js';
             $editor_css = $block_folder . '/editor.css';
             $style_css = $block_folder . '/style.css';
@@ -58,7 +60,7 @@ add_action('init', function () {
                     get_template_directory_uri() . '/blocks/' . basename($block_folder) . '/editor.js',
                     ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'],
                     filemtime($editor_js),
-                    true // Load in the footer
+                    true
                 );
             }
 
@@ -82,6 +84,48 @@ add_action('init', function () {
         }
     }
 });
+
+// Callback function to render the 'workrepeater' block dynamically
+function render_workrepeater_block($attributes) {
+    // Query for posts in the 'portfolio' category
+    $args = array(
+        'post_type'      => 'post',
+        'posts_per_page' => -1,               // -1 for all posts
+        'category_name'  => 'portfolio',      // Filter by 'portfolio' category
+    );
+
+    $query = new WP_Query($args);
+    
+    // Start buffering content
+    ob_start();
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            ?>
+            <div class="portfolio-item">
+                <h2><?php the_title(); ?></h2>
+                <div class="portfolio-content">
+                    <?php the_excerpt(); // Or use the_content() for full content ?>
+                </div>
+            </div>
+            <?php
+        endwhile;
+        wp_reset_postdata();
+    else :
+        echo '<p>No portfolio posts found.</p>';
+    endif;
+
+    // Capture the loop output
+    $content = ob_get_clean();
+
+    // Now, render the block template with dynamic content inserted
+    ob_start();
+    include get_template_directory() . '/blocks/workrepeater/block.php';
+    $block_html = ob_get_clean();
+
+    return str_replace('{{posts}}', $content, $block_html); // Replace placeholder with actual content
+}
+
 
 function bramwerink_render_svg($atts) {
     // Parse shortcode attributes
@@ -108,5 +152,25 @@ function bramwerink_render_svg($atts) {
 }
 add_shortcode('svg', 'bramwerink_render_svg');
 
+//callback for repeating posts
+function register_custom_blocks() {
+    // Path to your blocks folder
+    $blocks = ['cards', 'hero', 'textandimage', 'workrepeater'];
+
+    foreach ( $blocks as $block ) {
+        register_block_type(
+            get_template_directory() . '/blocks/' . $block, // Use block.json
+            array(
+                'render_callback' => function ( $attributes, $content ) use ( $block ) {
+                    // Include the block's PHP rendering logic
+                    ob_start();
+                    include get_template_directory() . "/blocks/$block/block.php";
+                    return ob_get_clean();
+                },
+            )
+        );
+    }
+}
+add_action( 'init', 'register_custom_blocks' );
 
 ?>
