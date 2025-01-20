@@ -1,0 +1,29 @@
+.textandimage{
+    background: var(--cloudy);
+    padding: 10rem 0;
+}
+
+.textandimage .content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.textandimage .subtitle{
+
+}
+
+.textandimage .title{
+    
+}
+
+.textandimage .text{
+    
+}
+
+.textandimage a.button-primary{
+    align-self: start;
+}
+
+.textandimage .collumn{
+    display: flex;
+}

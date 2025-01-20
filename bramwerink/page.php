@@ -6,13 +6,11 @@
 <?php get_header()?>
     </head>
     <body>
-    <?php if ( have_posts() ) : ?>
-    <?php while ( have_posts() ) : the_post(); ?>
-        <h1><?php the_title(); ?></h1>
-        <div><?php the_content(); ?></div>
-    <?php endwhile; ?>
-<?php endif; ?>
+   <?php if ( have_posts() ) : ?>
+            <?php while ( have_posts() ) : the_post(); // Setup the post data ?>
+                <?php the_content(); // Display the content (including Gutenberg blocks) ?>
+            <?php endwhile; // End the while loop ?>
+        <?php endif; // End the if statement ?>
 
-        <p>Version 1</p>
     </body>
 </html>
