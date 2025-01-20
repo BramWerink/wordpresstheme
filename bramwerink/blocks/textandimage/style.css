@@ -1,5 +1,4 @@
 .textandimage{
-    background: var(--cloudy);
     padding: 10rem 0;
 }
 
@@ -8,22 +7,55 @@
     flex-direction: column;
     gap: 1rem;
 }
-.textandimage .subtitle{
-
-}
-
-.textandimage .title{
-    
-}
-
-.textandimage .text{
-    
-}
 
 .textandimage a.button-primary{
     align-self: start;
 }
 
-.textandimage .masonry{
+.textandimage .col-md-6{
+    padding: 1rem;
+}
+.textandimage .sector{
+    width: 100%;
+    padding-bottom: 100%;
+    background: var(--cloudy);
+    border-radius: 1rem;
+    position: relative;
+}
+
+.textandimage .sector svg{
+    width: 75%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+
+}
+
+.textandimage .sector.first{
+    background: var(--yellow-lighter);
+}
+
+.textandimage .sector.second{
+    background:var(--blue-lighter);
+}
+
+.textandimage .sector.third{
+    background:var(--red-lighter);
+}
+
+.textandimage .sector.fourth{
+    background:var(--green-lighter);
+}
+.textandimage .left{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chip-default{
+    background: white;
+    border: solid 1px var(--border);
+    border-radius: 1rem;
+    padding: 1rem!important;
 }

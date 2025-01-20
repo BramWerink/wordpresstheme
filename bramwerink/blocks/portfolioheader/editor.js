@@ -5,14 +5,14 @@
     const { element } = wp;
 
     // Fetch the HTML for the block
-    fetch(`${window.location.origin}/wp-content/themes/bramwerink/blocks/workrepeater/block.php`)
+    fetch(`${window.location.origin}/wp-content/themes/bramwerink/blocks/portfolioheader/block.php`)
         .then(function (response) {
             return response.text();
         })
         .then(function (html) {
             // Register the block once HTML is fetched
-            registerBlockType('blocks/workrepeater', {
-                title: __('workrepeater', 'bramwerink'),
+            registerBlockType('blocks/portfolioheader', {
+                title: __('portfolioheader', 'bramwerink'),
                 icon: 'smiley',
                 category: 'text',
                 attributes: {

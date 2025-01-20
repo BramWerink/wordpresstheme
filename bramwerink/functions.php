@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Function to register general styles (if needed)
 function register_styles() {
@@ -44,11 +44,6 @@ add_action('init', function () {
         $block_json_path = $block_folder . '/block.json';
 
         if (file_exists($block_json_path)) {
-            // Register the block and add the render_callback
-            register_block_type($block_folder, array(
-                'render_callback' => 'render_workrepeater_block',
-            ));
-
             // Enqueue assets if necessary
             $editor_js = $block_folder . '/editor.js';
             $editor_css = $block_folder . '/editor.css';
@@ -81,52 +76,48 @@ add_action('init', function () {
                     filemtime($style_css)
                 );
             }
+
+            // Register the block and set the render_callback to the PHP function
+            register_block_type_from_metadata($block_json_path, [
+                'render_callback' => 'render_dynamic_block', // Render callback for dynamic blocks
+            ]);
         }
     }
 });
 
-// Callback function to render the 'workrepeater' block dynamically
-function render_workrepeater_block($attributes) {
-    // Query for posts in the 'portfolio' category
-    $args = array(
-        'post_type'      => 'post',
-        'posts_per_page' => -1,               // -1 for all posts
-        'category_name'  => 'portfolio',      // Filter by 'portfolio' category
-    );
+// Generic Render Callback for All Blocks
+function render_dynamic_block($attributes, $content) {
+    // Determine the block's folder name
+    $block_name = str_replace('blocks/', '', $attributes['name']);
+    $block_folder = get_template_directory() . '/blocks/' . $block_name;
 
-    $query = new WP_Query($args);
-    
-    // Start buffering content
-    ob_start();
+    // Make sure block.php exists before including
+    if (file_exists($block_folder . '/block.php')) {
+        ob_start();
+        include $block_folder . '/block.php'; // Include the block's PHP file
+        return ob_get_clean();
+    }
 
-    if ($query->have_posts()) :
-        while ($query->have_posts()) : $query->the_post();
-            ?>
-            <div class="portfolio-item">
-                <h2><?php the_title(); ?></h2>
-                <div class="portfolio-content">
-                    <?php the_excerpt(); // Or use the_content() for full content ?>
-                </div>
-            </div>
-            <?php
-        endwhile;
-        wp_reset_postdata();
-    else :
-        echo '<p>No portfolio posts found.</p>';
-    endif;
-
-    // Capture the loop output
-    $content = ob_get_clean();
-
-    // Now, render the block template with dynamic content inserted
-    ob_start();
-    include get_template_directory() . '/blocks/workrepeater/block.php';
-    $block_html = ob_get_clean();
-
-    return str_replace('{{posts}}', $content, $block_html); // Replace placeholder with actual content
+    return $content; // Return content if block.php doesn't exist
 }
 
+// Define the custom block rendering function
+function render_workrepeater_block($attributes) {
+    // Ensure you're in the correct post context
+    $post_id = get_the_ID(); // Get the current post ID
+    
+    // Get the ACF field value for 'bedrijfsnaam'
+    $bedrijfsnaam = get_field('bedrijfsnaam', $post_id); // Pass the post ID to ensure ACF retrieves the correct value
+    
+    // Return the HTML output based on the ACF value
+    if ($bedrijfsnaam) {
+        return '<p>' . esc_html($bedrijfsnaam) . '</p>';
+    } else {
+        return '<p>No value for bedrijfsnaam</p>';
+    }
+}
 
+// Handle SVG Shortcode Rendering (if needed)
 function bramwerink_render_svg($atts) {
     // Parse shortcode attributes
     $atts = shortcode_atts(
@@ -152,25 +143,5 @@ function bramwerink_render_svg($atts) {
 }
 add_shortcode('svg', 'bramwerink_render_svg');
 
-//callback for repeating posts
-function register_custom_blocks() {
-    // Path to your blocks folder
-    $blocks = ['cards', 'hero', 'textandimage', 'workrepeater'];
-
-    foreach ( $blocks as $block ) {
-        register_block_type(
-            get_template_directory() . '/blocks/' . $block, // Use block.json
-            array(
-                'render_callback' => function ( $attributes, $content ) use ( $block ) {
-                    // Include the block's PHP rendering logic
-                    ob_start();
-                    include get_template_directory() . "/blocks/$block/block.php";
-                    return ob_get_clean();
-                },
-            )
-        );
-    }
-}
-add_action( 'init', 'register_custom_blocks' );
-
 ?>
+

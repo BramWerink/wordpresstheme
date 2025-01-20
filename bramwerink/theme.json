@@ -6,8 +6,8 @@
         "wideSize": "90vw"
       },
       "spacing": {
-        "padding": false,
-        "margin": false
+        "padding": true,
+        "margin": true
       },
       "typography": {
         "customFontSize": true,
@@ -25,11 +25,6 @@
             "name": "Primary",
             "slug": "primary",
             "fontFamily": "'IBM Plex Sans', sans-serif"
-          },
-          {
-            "name": "Secondary",
-            "slug": "secondary",
-            "fontFamily": "system-ui, sans-serif"
           }
         ]
       }
