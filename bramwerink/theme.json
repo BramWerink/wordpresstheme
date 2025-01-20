@@ -1,0 +1,38 @@
+{
+    "version": 2,
+    "settings": {
+      "layout": {
+        "contentSize": "1400px",
+        "wideSize": "90vw"
+      },
+      "spacing": {
+        "padding": false,
+        "margin": false
+      },
+      "typography": {
+        "customFontSize": true,
+        "dropCap": true,
+        "fontStyle": true,
+        "fontWeight": true,
+        "letterSpacing": true,
+        "lineHeight": false,
+        "textColumns": false,
+        "textDecoration": true,
+        "textTransform": true,
+        "writingMode": false,
+        "fontFamilies": [
+          {
+            "name": "Primary",
+            "slug": "primary",
+            "fontFamily": "'IBM Plex Sans', sans-serif"
+          },
+          {
+            "name": "Secondary",
+            "slug": "secondary",
+            "fontFamily": "system-ui, sans-serif"
+          }
+        ]
+      }
+    }
+  }
+  

@@ -40,7 +40,7 @@
     flex-direction: column;
 }
 
-svg{
+.cards svg{
     right: 0;
     position: absolute;
     transition: 200ms ease;
