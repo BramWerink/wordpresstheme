@@ -110,5 +110,4 @@ add_shortcode('svg', 'bramwerink_render_svg');
 
 
 
-
 ?>
