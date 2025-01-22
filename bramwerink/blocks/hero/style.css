@@ -1,6 +1,6 @@
 
 .hero {
-    padding: 14rem 0rem;
+    padding: 8rem 0rem;
     background: var(--main-lighter);
 }
 
@@ -68,7 +68,7 @@ a.button-primary{
     border-radius: 10rem;
     text-decoration: none;
     transition: 200ms;
-    display: inline-block;
+    align-self: start;
 }
 
 a.button-primary .icon{

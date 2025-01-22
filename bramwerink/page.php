@@ -11,6 +11,5 @@
                 <?php the_content(); // Display the content (including Gutenberg blocks) ?>
             <?php endwhile; // End the while loop ?>
         <?php endif; // End the if statement ?>
-
     </body>
 </html>
