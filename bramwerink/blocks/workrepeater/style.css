@@ -1,0 +1,33 @@
+.workrepeater{
+    padding: 8rem 1rem;
+    background: var(--main-lighter);
+}
+
+
+.workrepeater .single{
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.workrepeater .single img{
+    width: 100%;
+    background:var(--main-lighter);
+    border-radius: 1rem;
+}
+
+.workrepeater .single .content{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
+    height: 100%;
+}
+
+.workrepeater .single .content #subtitle{
+   color: var(--main);
+   padding-top: 1rem;
+}
+

@@ -6,7 +6,6 @@
                     <p>UX/UI Design</p>
                     <h2>Oplossingen voor alle sectoren</h2>
                     <p>Ik bied op maat gemaakte oplossingen voor verschillende sectoren, waarbij ik rekening houd met de unieke behoeften van elk bedrijf. Of het nu gaat om softwareontwikkeling, webdesign, branding of andere digitale diensten, ik lever resultaatgerichte oplossingen die de doelen van mijn klanten ondersteunen.</p>
-                    <a href="/werk" class="button-primary">Sectoren</a>
                 </div>
             </div>
             <div class="col-md-6">
