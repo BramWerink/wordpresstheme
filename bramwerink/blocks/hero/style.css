@@ -1,6 +1,6 @@
 
 .hero {
-    padding: 8rem 0rem;
+    padding: 10rem 0rem;
     background: var(--main-lighter);
 }
 
@@ -41,6 +41,7 @@
     opacity: 0; /* Hidden initially */
     display: inline-block;
     transition: opacity 0.5s ease-in-out;
+    margin: 0;
 }
 
 .speech .emoji {
@@ -61,18 +62,3 @@
     }
 }
 
-a.button-primary{
-    background-color: var(--main);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 10rem;
-    text-decoration: none;
-    transition: 200ms;
-    align-self: start;
-}
-
-a.button-primary .icon{
-    font-size: 1rem;
-    margin-left: 1rem;
-    opacity: 0;;
-}

@@ -143,5 +143,25 @@ function bramwerink_render_svg($atts) {
 }
 add_shortcode('svg', 'bramwerink_render_svg');
 
+function my_custom_theme_editor_styles() {
+    add_editor_style('style.css'); // Replace with the path to your stylesheet.
+}
+add_action('admin_init', 'my_custom_theme_editor_styles');
+
+
+function custom_image_sizes() {
+    // Add a custom image size with hard cropping
+    add_image_size('custom-cropped', 800, 600, true); // Width: 800px, Height: 600px
+}
+add_action('after_setup_theme', 'custom_image_sizes');
+
+add_theme_support( 'spacing' );
+add_theme_support( 'custom-line-height' );
+add_theme_support( 'custom-units' );
+add_theme_support( 'block-editor-settings' );
+add_theme_support( 'align-wide' );
+
+
+
 ?>
 
