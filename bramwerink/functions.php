@@ -24,6 +24,16 @@ function register_my_menu() {
 }
 add_action('after_setup_theme', 'register_my_menu');
 
+// sitemap
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'sitemap' => __( 'Site Map' ),
+     )
+   );
+ }
+ add_action( 'init', 'register_my_menus' );
+
 // Add this in your theme's functions.php for block editor support
 add_action('after_setup_theme', function () {
     add_theme_support('editor-styles');
