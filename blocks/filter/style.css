@@ -1,0 +1,28 @@
+.filter-wrapper{
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+ul.filter{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+    padding: 0;
+    width: 100%;
+}
+
+ul.filter li {
+    list-style: none;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+ul.filter li.active{
+    background-color: var(--main);
+    color: white;
+}
+
+
+
+
