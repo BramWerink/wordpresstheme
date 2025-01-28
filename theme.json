@@ -1,0 +1,93 @@
+{
+    "version": 2,
+    "settings": {
+        "layout": {
+            "contentSize": "1200px", 
+            "wideSize": "90vw",  
+            "allowCustomSizes": true,
+            "allowCustomWidths": true,
+            "alignment": {
+                "wide": true,
+                "full": true
+            }
+        },
+        "spacing": {
+            "padding": true,
+            "margin": true,
+            "blockGap": true
+        },
+        "typography": {
+            "customFontSize": true,
+            "dropCap": true,
+            "fontStyle": true,
+            "fontWeight": true,
+            "letterSpacing": true,
+            "lineHeight": false,
+            "textColumns": false,
+            "textDecoration": true,
+            "textTransform": true,
+            "writingMode": false,
+            "fontFamilies": [
+                {
+                    "name": "Primary",
+                    "slug": "primary",
+                    "fontFamily": "'IBM Plex Sans', sans-serif"
+                }
+            ]
+        },
+        "blocks": {
+            "core/columns": {
+                "spacing": {
+                    "blockGap": true
+                },
+                "border": {
+                    "radius": true
+                }
+            },
+            "core/group": {
+                "border": {
+                    "radius": true
+                },
+                "layout": {
+                    "blockSpacing": true,
+                    "contentSize": true,
+                    "wideSize": true
+                    
+                },
+                "spacing": {
+                    "padding": {
+                        "top": true,
+                        "right": true,
+                        "bottom": true,
+                        "left": true
+                    },
+                    "margin": {
+                        "top": true,
+                        "right": true,
+                        "bottom": true,
+                        "left": true
+                    }
+                }
+            },
+            "core/row": {
+                "layout": {
+                    "blockSpacing": true
+                }
+            },
+            "core/image": {
+                "border": {
+                    "radius": true,
+                    "stroke": true
+                },
+                "layout":{
+                    "width": true
+                }
+            },
+            "core/grid": {
+                "spacing": {
+                    "blockGap": true
+                }
+            }
+        }
+    }
+}

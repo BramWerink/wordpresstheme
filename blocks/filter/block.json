@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "blocks/filter",  
+    "title": "Your Custom Block",
+    "category": "text",
+    "icon": "smiley",
+    "description": "A custom block for your WordPress theme.",
+    "keywords": ["hero", "block"],
+    "supports": {
+      "align": true,
+      "anchor": true,
+      "customClassName": true
+    },
+    "textdomain": "bramwerink",
+    "editorScript": "block-editor-script",  
+    "editorStyle": "block-editor-style",  
+    "style": "block-front-end-style"
+}
