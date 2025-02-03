@@ -98,10 +98,6 @@ h1, h2, h3, h4, h5, h6, a, li, p, span, div, button, input, textarea, select {
     font-family: "IBM Plex Sans", serif;
     /* margin: 0!important; */
  }
-
- p{
-    line-height: 1.8;
- }
  
  h1, h2, h3, h4, h5, h6 {
    font-weight: 600!important;
@@ -283,32 +279,3 @@ footer p{
     margin-right: auto;
 }
 
-/* Section Blocks */
-/* Image block */
-
-.ui-gallery-square{
-    padding: 1rem;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    border-radius: 1rem;
-    aspect-ratio: 1;
-}
-
-.ui-gallery-wide{
-    aspect-ratio: 2/1;
-    padding: 1rem;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    border-radius: 1rem;
-
-}
-.wp-block-gallery {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-}
-
-.wp-block-gallery .wp-block-image{
-    width: unset!important;
-}

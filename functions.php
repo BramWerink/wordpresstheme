@@ -1,10 +1,37 @@
 <?php
 
-// Function to register general styles (if needed)
-function register_styles() {
-    wp_enqueue_style('style', get_stylesheet_uri(), array(), '1.0', 'all');
+function register_theme_styles() {
+    // Enqueue the root style.css file in the theme's root directory
+    wp_enqueue_style('main-style', get_stylesheet_uri(), array(), '1.0', 'all');
+
+    // Base directory for additional styles
+    $base_directory = get_template_directory() . '/styles';
+
+    // Use RecursiveDirectoryIterator to find all .css files inside the styles directory
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($base_directory));
+    $css_files = array();
+
+    foreach ($iterator as $file) {
+        // Check if the file is a CSS file
+        if ($file->isFile() && pathinfo($file->getFilename(), PATHINFO_EXTENSION) === 'css') {
+            $css_files[] = $file->getPathname();
+        }
+    }
+
+    // Enqueue each CSS file from the styles directory
+    foreach ($css_files as $file_path) {
+        // Convert the file path to a URL
+        $file_url = str_replace(get_template_directory(), get_template_directory_uri(), $file_path);
+
+        // Generate a unique handle for each file (based on its path)
+        $handle = 'style-' . md5($file_path);
+
+        // Enqueue the CSS file
+        wp_enqueue_style($handle, $file_url, array(), '1.0', 'all');
+    }
 }
-add_action('wp_enqueue_scripts', 'register_styles');
+add_action('wp_enqueue_scripts', 'register_theme_styles');
+
 
 // Add theme support for custom logo
 function my_theme_setup() {
@@ -154,7 +181,7 @@ function bramwerink_render_svg($atts) {
 add_shortcode('svg', 'bramwerink_render_svg');
 
 function my_custom_theme_editor_styles() {
-    add_editor_style('style.css'); // Replace with the path to your stylesheet.
+    add_editor_style('styles/style.css'); // Replace with the path to your stylesheet.
 }
 add_action('admin_init', 'my_custom_theme_editor_styles');
 
