@@ -22,8 +22,8 @@
             "fontStyle": true,
             "fontWeight": true,
             "letterSpacing": true,
-            "lineHeight": false,
-            "textColumns": false,
+            "lineHeight": true,
+            "textColumns": true,
             "textDecoration": true,
             "textTransform": true,
             "writingMode": false,
@@ -87,7 +87,13 @@
                 "spacing": {
                     "blockGap": true
                 }
-            }
+            },
+            "core/gallery": {
+      "columns": {
+        "min": 1,
+        "max": 8
+      }
+    }
         }
     }
 }

@@ -1,0 +1,30 @@
+.image-big,
+.image-reg,
+.image-double{
+    padding:1rem!important;
+}
+
+.image-big img,
+.image-reg img,
+.image-double img{
+    border-radius: 1rem;
+}
+
+.image-big img{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: block;
+}
+
+.image-reg img{
+    width: 70%;
+    max-width: 1000px;
+    margin: auto;
+    display: block;
+}
+.image-double .image-column{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
