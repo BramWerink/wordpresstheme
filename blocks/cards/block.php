@@ -24,7 +24,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="illustration-wrapper">
-                    <svg width="289" height="217" viewBox="0 0 289 217" fill="none" xmlns="http://www.w3.org/2000/svg" style="left:12%; top:10%;">
+                    <svg width="289" height="217" viewBox="0 0 289 217" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:-10%; top:10%;">
 <rect x="0.333252" width="384" height="333" rx="40" fill="#37B144"/>
 <path class="square first" fill-opacity="0.5" d="M20.3333 40C20.3333 28.9543 29.2876 20 40.3333 20H122.333C127.856 20 132.333 24.4772 132.333 30V250C132.333 261.046 123.379 270 112.333 270H40.3333C29.2876 270 20.3333 261.046 20.3333 250V40Z" fill="white"/>
 <path class="square second" fill-opacity="0.5" d="M142.333 30C142.333 24.4771 146.81 20 152.333 20H244.333C249.856 20 254.333 24.4772 254.333 30V123C254.333 128.523 249.856 133 244.333 133H152.333C146.81 133 142.333 128.523 142.333 123V30Z" fill="white"/>

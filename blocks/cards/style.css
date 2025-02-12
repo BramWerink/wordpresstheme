@@ -4,7 +4,9 @@
 
 }
 
-
+.cards .container{
+    max-width: 1400px;
+}
 
 .cards .card{
     background: white;
