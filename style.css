@@ -93,6 +93,10 @@ html {
     background-color: var(--purple-lighter);
 }
 
+.shadow-default{
+  box-shadow: 0px 8px 32px 0px rgba(0,0,0,0.08);
+  /* Horizontal, Vertical, Blur, Spread, color */
+}
 /* Section Typography */
 h1, h2, h3, h4, h5, h6, a, li, p, span, div, button, input, textarea, select {
     font-family: "IBM Plex Sans", serif;
@@ -222,16 +226,7 @@ footer p{
     margin: 0;
 }
 
-@media screen and (max-width: 768px) {
-    .wrapper-portfolio-single h1{
-     font-size: 3rem!important;
-    }
 
-    .wrapper-portfolio-single h2{
-        font-size: 1.5rem!important;
-       }
-      
-  }
 
   .gallery-wrapper .gallery-item{
     position: relative;
@@ -312,3 +307,62 @@ footer p{
 .wp-block-gallery .wp-block-image{
     width: unset!important;
 }
+
+/* Logo Block */
+.logo-row{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.logo-wrapper{
+  border: solid 1px var(--border);
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  transition: all 200ms ease;
+}
+
+.logo-wrapper:hover{
+  box-shadow: 0px 8px 32px 0px rgba(0,0,0,0.16);
+}
+.logo-wrapper img{
+  width: 100px;
+  aspect-ratio: 2/1;
+  object-fit: contain;
+  display: block;
+}
+
+/* text block */
+
+.text-block .text-column p{
+margin: 0!important;
+}
+
+.section-title >div{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center!important;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.section-title .wp-block-column:nth-of-type(2) > div{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: start;
+}
+
+.section-title .number{
+  font-size: 8rem;
+}
+
+ @media screen and (max-width: 768px) {
+  .section-title .number{
+    font-size: 5rem;
+    text-align: left;
+  }
+} 

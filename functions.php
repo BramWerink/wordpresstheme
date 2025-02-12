@@ -46,20 +46,14 @@ function mytheme_register_menus() {
 add_action('after_setup_theme', 'mytheme_register_menus');
 
 // Register navigation menu
-function register_my_menu() {
-    register_nav_menu('main-nav', 'Main Navigation');
-}
-add_action('after_setup_theme', 'register_my_menu');
-
-// sitemap
 function register_my_menus() {
-  register_nav_menus(
-    array(
-      'sitemap' => __( 'Site Map' ),
-     )
-   );
- }
- add_action( 'init', 'register_my_menus' );
+    register_nav_menus([
+        'main-nav' => __('Main Navigation'),
+        'sitemap' => __('Site Map')
+    ]);
+}
+add_action('after_setup_theme', 'register_my_menus');
+
 
 // Add this in your theme's functions.php for block editor support
 add_action('after_setup_theme', function () {
@@ -70,7 +64,10 @@ add_action('after_setup_theme', function () {
 });
 
 // Adding support for admin bar
-add_theme_support('admin-bar');
+if (!is_admin()) {
+    add_filter('show_admin_bar', '__return_true');
+}
+
 
 // Register Custom Blocks and Enqueue Assets
 add_action('init', function () {
@@ -198,6 +195,24 @@ add_theme_support( 'custom-units' );
 add_theme_support( 'block-editor-settings' );
 add_theme_support( 'align-wide' );
 
+
+function my_enqueue_block_editor_assets() {
+    wp_enqueue_script(
+        'my-block-editor-script',
+        get_template_directory_uri() . '/js/editor.js',
+        array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
+        false,
+        true
+    );
+
+    wp_enqueue_style(
+        'my-block-editor-style',
+        get_template_directory_uri() . '/css/editor-style.css',
+        array(),
+        false
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'my_enqueue_block_editor_assets' );
 
 
 ?>
