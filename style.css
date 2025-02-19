@@ -100,7 +100,6 @@ html {
 /* Section Typography */
 h1, h2, h3, h4, h5, h6, a, li, p, span, div, button, input, textarea, select {
     font-family: "IBM Plex Sans", serif;
-    /* margin: 0!important; */
  }
 
  p{
@@ -336,33 +335,43 @@ footer p{
 
 /* text block */
 
-.text-block .text-column p{
-margin: 0!important;
+
+
+/* Section header */
+
+.section-header{
+
+padding: 5rem 2rem;
 }
 
-.section-title >div{
+.section-header .inner{
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-items: center!important;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 2rem;
+}
+.section-header .text >*,
+.section-header .number{
+  color: var(--body);
 }
 
-.section-title .wp-block-column:nth-of-type(2) > div{
+.section-header .number{
+  flex: 1;
+  min-width:20rem;
+  color: var(--main);
+  text-align: right;
+}
+
+.section-header .text{
+  flex: 2;
+  min-width:20rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  justify-content: start;
+  gap: 1rem;
 }
 
-.section-title .number{
-  font-size: 8rem;
+.section-header .text >*{
+  margin: 0!important;
 }
-
- @media screen and (max-width: 768px) {
-  .section-title .number{
-    font-size: 5rem;
-    text-align: left;
-  }
-} 
